@@ -174,11 +174,6 @@
             }
         }
 
-        function updateQty(index, val) {
-            // VULNERABILITY
-            cart[index].qty = parseInt(val);
-            updateCart();
-        }
     function updateQty(index, val) {
             let cleanVal = parseInt(val);
 
@@ -207,11 +202,11 @@
 
             // VULNERABILITY
             // Threshold
-            if (apiHits > 10) {
-                document.getElementById('api-crash').style.display = 'flex';
-                document.getElementById('flag-3').innerText = atob(_0x3);
+            if (now - lastApiHit < 2000) {
+                resultDiv.innerText = "Please wait before calculating again.";
                 return;
             }
+
 
             // Normal Behavior
             resultDiv.innerText = "Calculating...";
@@ -232,4 +227,5 @@
 </body>
 
 </html>
+
 
